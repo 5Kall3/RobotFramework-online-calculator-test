@@ -7,45 +7,27 @@ class prepareCalculations:
     library = "SeleniumLibrary"
 
     def __get_library(self, lib):
-        """
-        Returns the library instance. It is required in order to instantiate
-        a driver object (library.webdriver.browser).
-        """
         return BuiltIn().get_library_instance(lib)
 
-    def number1_convert_and_click(self, number1):
-        list_of_numbers = list(number1)
+    def Python_do_math_on_many_numbers(self, whole_calculation):
+        whole_calculation_list = list(whole_calculation)
 
-        for item in list_of_numbers:
-            number_converted = "//button[@id='Btn" + item + "']"
+        for item in whole_calculation_list:
+            if item == "+":
+                math_thing_converted = "//button[@id='BtnPlus']"
+            elif item == "-":
+                math_thing_converted = "//button[@id='BtnMinus']"
+            elif item == "*":
+                math_thing_converted = "//button[@id='BtnMult']"
+            elif item == "/":
+                math_thing_converted = "//button[@id='BtnDiv']"
+            elif item == "n":
+                math_thing_converted = "//button[@id='BtnSign']"
+            else:
+                math_thing_converted = "//button[@id='Btn" + item + "']"
 
             driver = self.__get_library(self.library).driver
             WebDriverWait(driver, 60).until(expected_conditions.presence_of_element_located((
-                By.XPATH, number_converted))).click()
+                By.XPATH, math_thing_converted))).click()
 
-            print(number_converted)
-
-    def number2_convert_and_click(self, number2):
-        list_of_numbers = list(number2)
-
-        for item in list_of_numbers:
-            number_converted = "//button[@id='Btn" + item + "']"
-
-            driver = self.__get_library(self.library).driver
-            WebDriverWait(driver, 60).until(expected_conditions.presence_of_element_located((
-                By.XPATH, number_converted))).click()
-
-            print(number_converted)
-
-    def math_symbol_convert(self, math_symbol):
-        if math_symbol == "+":
-            symbol_converted = "//button[@id='BtnPlus']"
-        elif math_symbol == "-":
-            symbol_converted = "//button[@id='BtnMinus']"
-        elif math_symbol == "*":
-            symbol_converted = "//button[@id='BtnMult']"
-        elif math_symbol == "/":
-            symbol_converted = "//button[@id='BtnDiv']"
-
-        print(symbol_converted)
-        return symbol_converted
+            print(math_thing_converted)

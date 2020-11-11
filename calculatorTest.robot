@@ -8,15 +8,15 @@ Open calculator website
     Open calculator in browser
     Agree to terms popup
 
-Calculate tests
-    [Template]    Do math on two numbers
-    2        +    2        4
-    12       +    12       24
-    3        -    2        1
-    21       -    20       1
-    3        *    3        9
-    10       *    10       100
-    6        /    3        2
-    21       /    3        7
-    12345    *    12345    152399025
-    1        /    0        Error: DivByZero
+Calculate more test
+# Template = first argument: calculation    second argument: result
+# Negative numbers on calculation expressed as "n" at end of number (21n = -21)
+    [Template]    Test calculator
+    2+2                  4
+    5-2                  3
+    5n-5                -10
+    5*5                 25
+    54/9                6
+    1+5-3*5/2           -1.5
+    55*26/14-3+123      222.1428571428571429
+    1/0                 Error: DivByZero

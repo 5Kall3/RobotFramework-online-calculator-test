@@ -8,7 +8,6 @@ ${SELENIUM_TIMEOUT_TIME}    10 seconds
 ${URL_FOR_BROWSER}    https://web2.0calc.com/
 ${BROWSER_NAME}    chrome
 
-
 *** Keywords ***
 Open calculator in browser
     Set Selenium Timeout    ${SELENIUM TIMEOUT TIME}
@@ -17,19 +16,17 @@ Open calculator in browser
 
 Agree to terms popup
     Wait Until Element Is Visible    ${PRIVACY TITLE}
-    Sleep    0.5
     Click Button    ${TERMS AGREE BUTTON}
     Wait Until Element Is Visible    ${BUTTON CALCULATE}
 
-Do math on two numbers
-    [Arguments]    ${NUMBER 1}    ${MATH SYMBOL}    ${NUMBER 2}    ${RESULT}
+Test calculator
+    [Arguments]    ${CALCULATION}    ${RESULT}
+    Python do math on many numbers    ${CALCULATION}
+    Calculate the whole thing    ${RESULT}
 
-    ${MATH SYMBOL} =    math symbol convert    ${MATH SYMBOL}
-    number1 convert and click    ${NUMBER 1}
-    Click Button    ${MATH SYMBOL}
-    number2 convert and click    ${NUMBER 2}
+Calculate the whole thing
+    [Arguments]    ${RESULT}
     Click Button    ${BUTTON CALCULATE}
-
     Wait Until Element Is Visible    //input[@class="loading"]
     Wait Until Element Is Not Visible    //input[@class="loading"]
     ${MATH RESULT} =    Get Value    ${RESULT TEXT}
