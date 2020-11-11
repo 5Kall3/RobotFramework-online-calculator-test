@@ -16,33 +16,25 @@ Open calculator in browser
     Wait Until Element Is Visible    ${TERMS AGREE BUTTON}
 
 Agree to terms popup
+    Wait Until Element Is Visible    ${PRIVACY TITLE}
+    Sleep    0.5
     Click Button    ${TERMS AGREE BUTTON}
     Wait Until Element Is Visible    ${BUTTON CALCULATE}
 
-Add two numbers
-    ${FIRTS NUMBER} =
-    ${SECOND NUMBER} =
-    Click Button    ${FIRST NUMBER}
-    Click Button    ${BUTTON PLUS}
-    Click Button    ${SECOND NUMBER}
+Do math on two numbers
+    [Arguments]    ${NUMBER 1}    ${MATH SYMBOL}    ${NUMBER 2}    ${RESULT}
+
+    ${MATH SYMBOL} =    math symbol convert    ${MATH SYMBOL}
+    number1 convert and click    ${NUMBER 1}
+    Click Button    ${MATH SYMBOL}
+    number2 convert and click    ${NUMBER 2}
     Click Button    ${BUTTON CALCULATE}
 
-Press all buttons
-    Click Button    ${BUTTON 1}
-    Click Button    ${BUTTON 2}
-    Click Button    ${BUTTON 3}
-    Click Button    ${BUTTON 4}
-    Click Button    ${BUTTON 5}
-    Click Button    ${BUTTON 6}
-    Click Button    ${BUTTON 7}
-    Click Button    ${BUTTON 8}
-    Click Button    ${BUTTON 9}
-    Click Button    ${BUTTON 0}
-    Click Button    ${BUTTON PLUS}
-    Click Button    ${BUTTON MINUS}
-    Click Button    ${BUTTON MULTIPLY}
-    Click Button    ${BUTTON DIVIDE}
-    Click Button    ${BUTTON CALCULATE}
+    Wait Until Element Is Visible    //input[@class="loading"]
+    Wait Until Element Is Not Visible    //input[@class="loading"]
+    ${MATH RESULT} =    Get Value    ${RESULT TEXT}
+    Should Be Equal As Strings    ${MATH RESULT}    ${RESULT}
+    Click Button    ${BUTTON CLEAR}
 
 Close browser when done
     Close Browser
