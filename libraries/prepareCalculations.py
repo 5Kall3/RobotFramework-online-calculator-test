@@ -29,5 +29,3 @@ class prepareCalculations:
             driver = self.__get_library(self.library).driver
             WebDriverWait(driver, 60).until(expected_conditions.presence_of_element_located((
                 By.XPATH, math_thing_converted))).click()
-
-            print(math_thing_converted)
