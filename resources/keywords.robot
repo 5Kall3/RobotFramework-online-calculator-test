@@ -21,10 +21,10 @@ Agree to terms popup
 
 Test calculator
     [Arguments]    ${CALCULATION}    ${RESULT}
-    Python do math on many numbers    ${CALCULATION}
-    Calculate the whole thing    ${RESULT}
+    python do math on many numbers    ${CALCULATION}
+    Test results    ${RESULT}
 
-Calculate the whole thing
+Test results
     [Arguments]    ${RESULT}
     Click Button    ${BUTTON CALCULATE}
     Wait Until Element Is Visible    //input[@class="loading"]

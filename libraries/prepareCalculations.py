@@ -3,13 +3,14 @@ from selenium.webdriver.common.by import By
 from selenium.webdriver.support.ui import WebDriverWait
 from selenium.webdriver.support import expected_conditions
 
+
 class prepareCalculations:
     library = "SeleniumLibrary"
 
     def __get_library(self, lib):
         return BuiltIn().get_library_instance(lib)
 
-    def Python_do_math_on_many_numbers(self, whole_calculation):
+    def python_do_math_on_many_numbers(self, whole_calculation):
         whole_calculation_list = list(whole_calculation)
 
         for item in whole_calculation_list:
@@ -21,8 +22,6 @@ class prepareCalculations:
                 math_thing_converted = "//button[@id='BtnMult']"
             elif item == "/":
                 math_thing_converted = "//button[@id='BtnDiv']"
-            elif item == "n":
-                math_thing_converted = "//button[@id='BtnSign']"
             else:
                 math_thing_converted = "//button[@id='Btn" + item + "']"
 
