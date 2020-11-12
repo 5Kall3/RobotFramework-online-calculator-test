@@ -9,6 +9,10 @@ ${URL_FOR_BROWSER}    https://web2.0calc.com/
 ${BROWSER_NAME}    chrome
 
 *** Keywords ***
+Start calculator
+    Open calculator in browser
+    Agree to terms popup
+
 Open calculator in browser
     Set Selenium Timeout    ${SELENIUM TIMEOUT TIME}
     Open browser    ${URL FOR BROWSER}    ${BROWSER NAME}
@@ -27,9 +31,11 @@ Test calculator
 Test results
     [Arguments]    ${RESULT}
     Click Button    ${BUTTON CALCULATE}
-    Wait Until Element Is Visible    //input[@class="loading"]
-    Wait Until Element Is Not Visible    //input[@class="loading"]
+    Wait Until Element Is Visible    //div/input[@class="loading"]
+    Wait Until Element Is Not Visible    //div/input[@class="loading"]
     ${MATH RESULT} =    Get Value    ${RESULT TEXT}
+    #${MATH RESULT} =    decimal to int    ${MATH RESULT}
+    #${RESULT} =    decimal to int    ${RESULT}
     Should Be Equal As Strings    ${MATH RESULT}    ${RESULT}
     Click Button    ${BUTTON CLEAR}
 
