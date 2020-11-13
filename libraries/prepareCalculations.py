@@ -10,10 +10,6 @@ class prepareCalculations:
     def __get_library(self, lib):
         return BuiltIn().get_library_instance(lib)
 
-    def decimal_to_int(self, decimal):
-        integer = int(float(decimal))
-        return str(integer)
-
     def python_do_math_on_many_numbers(self, whole_calculation):
         whole_calculation_list = list(whole_calculation)
 

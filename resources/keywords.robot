@@ -31,8 +31,8 @@ Test calculator
 Test results
     [Arguments]    ${RESULT}
     Click Button    ${BUTTON CALCULATE}
-    Wait Until Element Is Visible    //div/input[@class="loading"]
-    Wait Until Element Is Not Visible    //div/input[@class="loading"]
+    Wait Until Element Is Visible    ${LOADING ICON}
+    Wait Until Element Is Not Visible    ${LOADING ICON}
     ${MATH RESULT} =    Get Value    ${RESULT TEXT}
     Should Be Equal As Strings    ${MATH RESULT}    ${RESULT}
     Click Button    ${BUTTON CLEAR}
