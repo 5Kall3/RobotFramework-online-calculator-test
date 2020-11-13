@@ -34,8 +34,6 @@ Test results
     Wait Until Element Is Visible    //div/input[@class="loading"]
     Wait Until Element Is Not Visible    //div/input[@class="loading"]
     ${MATH RESULT} =    Get Value    ${RESULT TEXT}
-    #${MATH RESULT} =    decimal to int    ${MATH RESULT}
-    #${RESULT} =    decimal to int    ${RESULT}
     Should Be Equal As Strings    ${MATH RESULT}    ${RESULT}
     Click Button    ${BUTTON CLEAR}
 
